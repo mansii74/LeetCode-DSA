@@ -1,28 +1,13 @@
 class Solution {
 public:
     int minOperations(string s) {
-        int count1 =0;
-        int count2=0;
-            for(int i = 0; i < s.length(); i++) {
-
-        // pattern 1: 010101
-        if(i % 2 == 0) { 
-            if(s[i] != '0') count1++;
-        } 
-        else {
-            if(s[i] != '1') count1++;
-        }
-
-        // pattern 2: 101010
-        if(i % 2 == 0) {
-            if(s[i] != '1') count2++;
-        } 
-        else {
-            if(s[i] != '0') count2++;
-        }
+        int count = 0;
+    
+    for(int i = 0; i < s.size(); i++) {
+        if(s[i] != (i % 2 + '0')) 
+            count++;
     }
-
-    return min(count1, count2);
-
+    
+    return min(count, (int)s.size() - count);
     }
 };
